@@ -1,0 +1,26 @@
+p = param
+
+for i = 1:2
+    if i == 1
+        C_alpha=1700;
+        Fz = 2000;
+    elseif i == 2
+        C_alpha=2280;
+        Fz = 4000;
+        
+    for k = 2.1:0.1:3.5
+        syms C
+        eq = tan(pi/(2*C))-k*C == 0;
+        solve(eq,C)
+        D = C_alpha*alpha_max/k;
+        B = k/(alpha_max*C);
+        p.F{end+1} = Fz;
+        p.C_alpha{end+1} = C_alpha;
+        p.k{end+1} = k;
+        p.D{end+1} = D;
+        p.C{end+1} = C;
+        p.B{end+1} = B;
+    end
+    end
+        
+        
